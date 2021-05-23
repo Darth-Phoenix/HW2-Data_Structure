@@ -1,5 +1,5 @@
 all: main.c bst.o ll.o arr.o bs.o hash.o rand.o
-	gcc main.c bst.o ll.o arr.o bs.o hash.o rand.o -o main.out
+	gcc main.c bst.o ll.o arr.o bs.o hash.o rand.o
 bst.o: bst.c data.h
 	gcc -c bst.c -o bst.o
 ll.o: ll.c data.h
@@ -13,4 +13,4 @@ hash.o: hash.c data.h
 rand.o: rand.c data.h
 	gcc -c rand.c -o rand.o
 clean:
-	rm -f bst.o ll.o arr.o bs.o hash.o rand.o main.out
+	rm -f bst.o ll.o arr.o bs.o hash.o rand.o a.out
