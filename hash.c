@@ -9,16 +9,17 @@ struct hnode{
     struct hnode *next;
 }*hash[TABLE_SIZE], *last[TABLE_SIZE];
 
-struct hnode *hash_insert(int key, int idx){
+void hash_insert(int key, int idx){
     struct hnode *p=(struct hnode*)malloc(sizeof(struct hnode));
     p->data=key;
     p->next=NULL;
     if (hash[idx]==NULL){
         hash[idx]=p;
-        return p;
+        last[idx]=p;
     }
     last[idx]->next=p;
-    return p;
+    last[idx]=p;
+    return;
 }
 
 void hash_search(int key, int idx){
@@ -40,7 +41,7 @@ void hash_build(int n, int *num){
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         idx=num[i]%TABLE_SIZE;
-        last[idx]=hash_insert(num[i], idx);
+        hash_insert(num[i], idx);
     }
     gettimeofday(&end, NULL);
     timer = 1000000*(end.tv_sec-start.tv_sec) + end.tv_usec - start.tv_usec;

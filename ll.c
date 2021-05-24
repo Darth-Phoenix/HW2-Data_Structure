@@ -8,17 +8,18 @@ struct lnode{
     struct lnode *next;
 }*LL=NULL, *prev=NULL;
 
-struct lnode *ll_insert(int key){
+void ll_insert(int key){
     struct lnode *p;
     p=(struct lnode*)malloc(sizeof(struct lnode));
     p->data=key;
     p->next=NULL;
     if (LL==NULL){   
         LL=p;    
-        return p;
+        prev=p;
     }
     prev->next=p;
-    return p;
+    prev=p;
+    return;
 }
 
 void ll_search(int key){
@@ -35,7 +36,7 @@ void ll_build(int n, int *num){
     unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
-        prev=ll_insert(num[i]);
+        ll_insert(num[i]);
     }
     gettimeofday(&end, NULL);
     timer = 1000000*(end.tv_sec-start.tv_sec) + end.tv_usec - start.tv_usec;
