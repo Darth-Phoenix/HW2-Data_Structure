@@ -16,6 +16,7 @@ void hash_insert(int key, int idx){
     if (hash[idx]==NULL){
         hash[idx]=p;
         last[idx]=p;
+        return;
     }
     last[idx]->next=p;
     last[idx]=p;

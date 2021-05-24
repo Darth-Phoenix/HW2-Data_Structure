@@ -16,6 +16,7 @@ void ll_insert(int key){
     if (LL==NULL){   
         LL=p;    
         prev=p;
+        return;
     }
     prev->next=p;
     prev=p;
