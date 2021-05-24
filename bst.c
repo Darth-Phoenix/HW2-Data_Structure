@@ -9,35 +9,21 @@ struct tnode{
     struct tnode *r_child;
 }*BST=NULL;
 
-void bst_insert(int key){
-    struct tnode *p, *q=BST;
-    p=(struct tnode*)malloc(sizeof(struct tnode));
-    p->data=key;
-    p->l_child=NULL;
-    p->r_child=NULL;
-    if (BST==NULL){
-        BST=p;
-        return;
+struct tnode *bst_insert(struct tnode *t, int key){
+    if (t==NULL){
+        struct tnode *p=(struct tnode*)malloc(sizeof(struct tnode));
+        p->data=key;
+        p->l_child=NULL;
+        p->r_child=NULL;
+        return p;
     }
-    while(q!=NULL){
-        if (key > q->data){
-            if (q->r_child)
-            q=q->r_child;
-            else{
-            q->r_child=p;
-            return;
-            }
-        }
-        else{
-            if (q->l_child)
-            q=q->l_child;
-            else{
-            q->l_child=p;
-            return;
-            }
-        }
+    if (key > t->data){
+        t->r_child=bst_insert(t->r_child, key);
     }
-
+    else{
+        t->l_child=bst_insert(t->l_child, key);
+    }
+    return t;
 }
 
 void bst_search(int key){
@@ -67,7 +53,7 @@ void bst_build(int n, int *num){
     unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
-        bst_insert(num[i]);
+        BST=bst_insert(BST, num[i]);
     }
     gettimeofday(&end, NULL);
     timer = 1000000*(end.tv_sec-start.tv_sec) + end.tv_usec - start.tv_usec;
