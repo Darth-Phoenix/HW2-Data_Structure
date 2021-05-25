@@ -53,17 +53,30 @@ void bst_insert(int key){
     return;
 }
 
-void bst_search(struct tnode *t, int key){
-    if (t->data==key){
-        return;
+void bst_search(int key){
+    struct tnode *q=BST;
+    while (q->data!=key){
+        if (key > q->data){
+            q=q->r_child;
+        }
+        else {
+            q=q->l_child;
+        }
     }
-    if (key > t->data){
-        bst_search(t->r_child, key);
-    }
-    else {
-        bst_search(t->l_child, key);
-    }
+    return;
 }
+
+// void bst_search(struct tnode *t, int key){
+//     if (t->data==key){
+//         return;
+//     }
+//     if (key > t->data){
+//         bst_search(t->r_child, key);
+//     }
+//     else {
+//         bst_search(t->l_child, key);
+//     }
+// }
 
 void bst_build(int n, int *num){
     struct timeval start;
@@ -86,7 +99,8 @@ void bst_query(int n, int *num){
     unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
-        bst_search(BST, num[i]);
+        bst_search(num[i]);
+        // bst_search(BST, num[i]);
     }
     gettimeofday(&end, NULL);
     timer = 1000000*(end.tv_sec-start.tv_sec) + end.tv_usec - start.tv_usec;
