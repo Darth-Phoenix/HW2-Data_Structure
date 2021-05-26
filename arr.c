@@ -1,5 +1,4 @@
 #include "data.h"
-
 int arr[1000000];
 
 void arr_insert(int key, int idx){

@@ -1,5 +1,4 @@
 #include "data.h"
-
 int bs_arr[1000000], size;
 
 int cmp(const void *p, const void *q){
