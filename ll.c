@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
 #include "data.h"
 
 struct lnode{
@@ -32,9 +29,6 @@ void ll_search(int key){
 }
 
 void ll_build(int n, int *num){
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         ll_insert(num[i]);
@@ -46,9 +40,6 @@ void ll_build(int n, int *num){
 }
 
 void ll_query(int n, int *num){
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         ll_search(num[i]);

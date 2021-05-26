@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
 #include "data.h"
 #define TABLE_SIZE 100000
 
@@ -33,9 +30,6 @@ void hash_search(int key, int idx){
 
 void hash_build(int n, int *num){
     int idx;
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     for (int i=0; i<TABLE_SIZE; i++){
         hash[i]=NULL;
     }
@@ -52,9 +46,6 @@ void hash_build(int n, int *num){
 
 void hash_query(int n, int *num){
     int idx;
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         idx=num[i]%TABLE_SIZE;

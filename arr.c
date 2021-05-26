@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
 #include "data.h"
 
 int arr[1000000];
@@ -19,9 +16,6 @@ void arr_search(int key){
 }
 
 void arr_build(int n, int *num){
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         arr_insert(num[i], i);
@@ -33,9 +27,6 @@ void arr_build(int n, int *num){
 }
 
 void arr_query(int n, int *num){
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         arr_search(num[i]);

@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
 #include "data.h"
 
 int bs_arr[1000000], size;
@@ -33,9 +30,6 @@ void bs_search(int key){
 
 void bs_build(int n, int *num){
     size=n;
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         bs_insert(num[i], i);
@@ -48,9 +42,6 @@ void bs_build(int n, int *num){
 }
 
 void bs_query(int n, int *num){
-    struct timeval start;
-    struct timeval end;
-    unsigned long timer;
     gettimeofday(&start, NULL);
     for (int i=0; i<n; i++){
         bs_search(num[i]);

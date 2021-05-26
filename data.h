@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/time.h>
+struct timeval start;
+struct timeval end;
+unsigned long timer;
 void bst_build(int n, int *num);
 void bst_query(int n, int *num);
 void bs_build(int n, int *num);
