@@ -3,9 +3,9 @@ make完產生arr.o bs.o ll.o bst.o hash.o rand.o a.out
 
 make clean會刪除上述的檔案
 
--d N：插入的資料筆數，每筆資料是唯一的(1e4, 1e5, 1e6)
+-d N：插入的資料筆數，每筆資料是唯一的(1e4, 1e5, 1e6)，執行後會產生dataset.txt，即為建立資料結構的資料集
 
--q M：查詢資料筆數(1e3, 1e4, 1e5)
+-q M：查詢資料筆數(1e3, 1e4, 1e5)，執行後會產生targetset.txt，即為查詢目標的資料集
 
 -bst：測量BST建立和查詢所需時間
 
