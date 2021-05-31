@@ -5,11 +5,17 @@ int main(int argc, char **argv){
     int i=1, d, q;
     int *list, *target;
     char *ptr;
+    FILE *fp;
+    fp=fopen("dataset.txt", "w");
     while(i<argc){
         if (strcmp(argv[i], "-d")==0){
             i++;
             d=(int)strtod(argv[i], &ptr);
             list=rand_data(d);
+            for (int i=0; i<d; i++){
+                fprintf(fp, "%d\n", list[i]);
+            }
+            fclose(fp);
         }
         else if (strcmp(argv[i], "-q")==0){
             i++;
