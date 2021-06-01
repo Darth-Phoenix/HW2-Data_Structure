@@ -6,12 +6,12 @@ int main(int argc, char **argv){
     int *list, *target;
     char *ptr;
     FILE *fp;
-    fp=fopen("dataset.txt", "w");
     while(i<argc){
         if (strcmp(argv[i], "-d")==0){
             i++;
             d=(int)strtod(argv[i], &ptr);
             list=rand_data(d);
+            fp=fopen("dataset.txt", "w");
             for (int i=0; i<d; i++){
                 fprintf(fp, "%d\n", list[i]);
             }
@@ -21,9 +21,12 @@ int main(int argc, char **argv){
             i++;
             q=(int)strtod(argv[i], &ptr);
             target=rand_index(d, q);
+            fp=fopen("targetset.txt", "w");
             for (int i=0; i<q; i++){
                 target[i]=list[target[i]];
+                fprintf(fp, "%d\n", target[i]);
             }
+            fclose(fp);
         }
         else if (strcmp(argv[i], "-bst")==0){
             printf("bst:\n");
